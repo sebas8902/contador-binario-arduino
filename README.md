@@ -42,12 +42,6 @@ Archivos de código fuente en C++ para Arduino listos para compilar y cargar.
 | **LED Indicador** | Pin 12 | Salida digital (Indicador de valor 15) |
 
 
-##  Autores
-
-* **Estudiante:** Sebastian DeLuque Garcia, Alberto Fandino Leal
-* **Asignatura:** Fundamentos de Mecatrónica / Sistemas
-* **Institución:** Corporación Universitaria Americana
-
 
 ## Conclusión
 
@@ -56,3 +50,10 @@ La realización de este proyecto permitió comprender cómo la placa Arduino UNO
 A través de los cuatro LEDs fue posible representar los valores del 0 al 15 correspondientes a los cuatro bits de un número binario. Se aplicaron ciclos `for`, variables, entradas lógicas mediante `INPUT_PULLUP`, lectura de pulsadores y manipulación de bits con operadores bitwise y funciones como `bitRead()`.
 
 Los retos permitieron iterar sobre el programa base y comprobar cómo pequeñas modificaciones en el código producen diferentes comportamientos físicos en el circuito. Finalmente, la simulación virtual en Tinkercad y el montaje en protoboard validaron la correcta ejecución teórica y práctica del proyecto.
+
+
+##  Autores
+
+* **Estudiante:** Sebastian DeLuque Garcia, Alberto Fandino Leal
+* **Asignatura:** Fundamentos de Mecatrónica / Sistemas
+* **Institución:** Corporación Universitaria Americana
