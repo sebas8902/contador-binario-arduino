@@ -1,18 +1,55 @@
 # Parcial Práctico — Contador Binario de 4 Bits con Arduino UNO
 
-## 1. Descripción del Proyecto
-
-Este proyecto documenta el diseño, la simulación y la implementación física de un contador binario de 4 bits en Arduino UNO. El sistema representa números decimales del 0 al 15 mediante cuatro LEDs (del bit menos significativo al más significativo) utilizando operadores bit a bit (bitwise) y funciones de manipulación de bits para encender o apagar las salidas digitales.
+Este repositorio contiene el desarrollo del parcial práctico sobre la implementación de un **Contador Binario de 4 Bits** utilizando una placa Arduino UNO. Se incluye el proyecto base junto con la resolución de 5 retos de programación e implementación en hardware.
 
 
+## 📁 Navegación Directa del Repositorio
 
-[Ver Contador de 4 Bits (Proyecto Base)](./Contador_4_bits/)
+Para revisar los detalles, la documentación técnica y las evidencias multimedia, haz clic en los siguientes enlaces:
 
-[Ver Resolución de Retos](./Retos/)
+* **[Contador de 4 Bits (Proyecto Base)](./Contador_4_bits/)**    
+Explicación completa del circuito principal, tabla de verdad, lista de materiales, capturas de Tinkercad, fotos del montaje físico y enlace al video demostrativo.
 
-[Ver Código Fuente](./codigo/)
+* **[Retos del Parcial (Retos 1 al 5)](./Retos/)**    
+Documentación detallada de cada reto (velocidad, secuencia descendente, pulsador, números pares y LED indicador) junto con sus evidencias de simulación.
 
-## 10. Conclusión
+* **[Código Fuente (.ino)](./codigo/)**    
+Archivos de código fuente en C++ para Arduino listos para compilar y cargar.
+
+
+
+## Resumen General del Proyecto
+
+### Componentes Utilizados
+
+* 1x Placa Arduino UNO R3
+* 1x Protoboard
+* 4x LEDs para las salidas digitales (Bit 0 a Bit 3)
+* 1x LED indicador adicional (Reto 5)
+* 5x Resistencias limitadoras de 220 Ω
+* 1x Pulsador / Botón (Reto 3)
+* Cables Jumper
+
+### Configuración de Pines
+
+| Componente | Pin Arduino | Función / Descripción |
+| --- | --- | --- |
+| **Bit 0 (LSB)** | Pin 8 | Salida digital bit menos significativo ($2^0$) |
+| **Bit 1** | Pin 9 | Salida digital bit 1 ($2^1$) |
+| **Bit 2** | Pin 10 | Salida digital bit 2 ($2^2$) |
+| **Bit 3 (MSB)** | Pin 11 | Salida digital bit más significativo ($2^3$) |
+| **Pulsador** | Pin 7 | Entrada digital (`INPUT_PULLUP`) |
+| **LED Indicador** | Pin 12 | Salida digital (Indicador de valor 15) |
+
+
+##  Autores
+
+* **Estudiante:** Sebastian DeLuque Garcia, Alberto Fandino Lopez
+* **Asignatura:** Fundamentos de Mecatrónica / Sistemas
+* **Institución:** Corporación Universitaria Americana
+
+
+## Conclusión
 
 La realización de este proyecto permitió comprender cómo la placa Arduino UNO utiliza sus salidas digitales para representar información binaria mediante LEDs.
 
