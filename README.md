@@ -60,172 +60,17 @@ Este proyecto documenta la creación, desarrollo físico y simulación de un con
 * **`digitalWrite()`**: Escribe un valor `HIGH` (5V) o `LOW` (0V) en el pin correspondiente.
 * **`digitalRead()`**: Lee la entrada del pulsador (`HIGH` o `LOW`).
 * **`delay()`**: Define el tiempo de pausa en milisegundos entre cambios de número.
-5. Explicación del código
-setup()
+### Explicación de Operadores Bitwise y Funciones Bit
 
-La función setup() se ejecuta una sola vez cuando Arduino inicia.
+Para controlar los LEDs individualmente sin escribir condicionales manuales para cada número (del 0 al 15), se analiza la representación binaria de la variable `numero` mediante dos enfoques:
 
-En ella se configuran los pines que se utilizarán como salidas.
+#### 1. Operaciones Bitwise (`&` y `<<`)
+Se evalúa la presencia de un `1` lógico en una posición específica utilizando una máscara binaria:
 
-pinMode(BIT0, OUTPUT);
-pinMode(BIT1, OUTPUT);
-pinMode(BIT2, OUTPUT);
-pinMode(BIT3, OUTPUT);
-
-Esto permite que Arduino pueda controlar el estado de los cuatro LEDs.
-
-loop()
-
-La función loop() se ejecuta continuamente mientras Arduino está funcionando.
-
-En el contador se utiliza para recorrer los números y actualizar los LEDs según el valor que se quiere representar.
-
-pinMode()
-
-pinMode() permite configurar un pin como entrada o salida.
-
-Por ejemplo:
-
-pinMode(BIT0, OUTPUT);
-
-indica que el pin utilizado para el BIT0 será una salida.
-
-Para el botón se utilizó:
-
-pinMode(BOTON_PIN, INPUT_PULLUP);
-
-lo que configura el pin como entrada utilizando la resistencia pull-up interna de Arduino.
-
-digitalWrite()
-
-digitalWrite() permite colocar un pin digital en estado HIGH o LOW.
-
-En este proyecto se utiliza para encender o apagar los LEDs.
-
-digitalWrite(BIT0, HIGH);
-
-enciende el LED conectado al BIT0.
-
-digitalWrite(BIT0, LOW);
-
-apaga el LED.
-
-digitalRead()
-
-digitalRead() permite leer el estado de un pin configurado como entrada.
-
-En el reto del botón se utiliza para comprobar si el pulsador fue presionado.
-
-int estadoBotonActual = digitalRead(BOTON_PIN);
-delay()
-
-delay() permite detener temporalmente la ejecución del programa durante una cantidad determinada de milisegundos.
-
-En este proyecto se utiliza una variable:
-
-const int waitDelay = 500;
-
-y posteriormente:
-
-delay(waitDelay);
-
-De esta forma, el tiempo de espera puede modificarse desde una sola variable.
-
-Ciclo for
-
-El ciclo for permite repetir una serie de instrucciones.
-
-Por ejemplo, en el contador ascendente:
-
-for (int numero = 0; numero <= 15; numero++)
-
-el programa comienza en 0 y aumenta el valor hasta llegar a 15.
-
-En el contador descendente se utiliza:
-
-for (int numero = 15; numero >= 0; numero--)
-
-para comenzar en 15 y disminuir hasta llegar a 0.
-
-Operador %
-
-En el contador mediante botón se utilizó:
-
-contador = (contador + 1) % 16;
-
-El operador % obtiene el residuo de una división.
-
-En este caso permite que después de llegar a 15 el contador vuelva a 0.
-
-La secuencia queda:
-
-0 → 1 → 2 → ... → 14 → 15 → 0
-
-6. Operaciones bit a bit
-
-Para determinar qué LEDs deben encenderse se utilizaron operaciones bitwise.
-
-Una de las expresiones utilizadas es:
-
-numero & (1 << bit)
-
-Esta expresión permite comprobar individualmente el estado de cada bit del número.
-
-Operador <<
-
-El operador << desplaza los bits hacia la izquierda.
-
-Por ejemplo:
-
-1 << 0
-
-produce:
-
-0001
-
-Mientras que:
-
-1 << 1
-
-produce:
-
-0010
-
-Y:
-
-1 << 2
-
-produce:
-
-0100
-
-Finalmente:
-
-1 << 3
-
-produce:
-
-1000
-
-Esto permite crear una máscara para revisar cada uno de los cuatro bits.
-
-Operador &
-
-El operador & realiza una operación AND bit a bit.
-
-Se utiliza para comparar el número con la máscara correspondiente.
-
-Por ejemplo:
-
-numero & (1 << 2)
-
-permite comprobar si el bit 2 del número está en 1.
-
-Si el resultado es diferente de cero, significa que ese bit está encendido.
-
-De esta manera el programa puede decidir si debe encender o apagar el LED correspondiente.
-
-7. Desarrollo de los retos
+```cpp
+digitalWrite(PIN, (numero & (1 << i)) ? HIGH : LOW); 
+```
+##6. Desarrollo de los retos
 Reto 1 — Velocidad del contador
 ¿Qué se solicitaba?
 
@@ -408,10 +253,7 @@ Los diferentes retos permitieron modificar el funcionamiento inicial del contado
 
 Finalmente, la simulación en Tinkercad y el montaje físico permitieron comprobar el funcionamiento del programa tanto de manera virtual como real.
 
-### Explicación de Operadores Bitwise
-Para evaluar cada bit de la variable `numero`, se aplican operaciones bit a bit:
-```cpp
-numero & (1 << i)
+
 Los diferentes retos permitieron modificar el funcionamiento inicial del contador y comprobar cómo pequeños cambios en el programa pueden producir diferentes comportamientos en el circuito.
 
 Finalmente, la simulación en Tinkercad y el montaje físico permitieron comprobar el funcionamiento del programa tanto de manera virtual como real.
