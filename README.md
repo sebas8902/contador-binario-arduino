@@ -34,10 +34,10 @@ Archivos de código fuente en C++ para Arduino listos para compilar y cargar.
 
 | Componente | Pin Arduino | Función / Descripción |
 | --- | --- | --- |
-| **Bit 0 (LSB)** | Pin 8 | Salida digital bit menos significativo ($2^0$) |
-| **Bit 1** | Pin 9 | Salida digital bit 1 ($2^1$) |
-| **Bit 2** | Pin 10 | Salida digital bit 2 ($2^2$) |
-| **Bit 3 (MSB)** | Pin 11 | Salida digital bit más significativo ($2^3$) |
+| **Bit 0 (LSB)** | Pin 8 | Salida digital bit menos significativo (1)  |
+| **Bit 1** | Pin 9 | Salida digital bit (2)  |
+| **Bit 2** | Pin 10 | Salida digital bit (4) |
+| **Bit 3 (MSB)** | Pin 11 | Salida digital bit más significativo (8) |
 | **Pulsador** | Pin 7 | Entrada digital (`INPUT_PULLUP`) |
 | **LED Indicador** | Pin 12 | Salida digital (Indicador de valor 15) |
 
