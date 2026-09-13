@@ -6,7 +6,7 @@ Este proyecto documenta el diseño, la simulación y la implementación física 
 
 
 
-#[Ver Contador de 4 Bits (Proyecto Base)](./Contador_4_bits/)
+[Ver Contador de 4 Bits (Proyecto Base)](./Contador_4_bits/)
 
 [Ver Resolución de Retos](./Retos/)
 
