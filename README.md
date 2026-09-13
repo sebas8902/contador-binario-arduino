@@ -1,4 +1,4 @@
-# Parcial Práctico — Contador Binario de 4 Bits con Arduino UNO
+# Parcial Practico — Contador Binario de 4 Bits con Arduino UNO
 
 Este repositorio contiene el desarrollo del parcial práctico sobre la implementación de un **Contador Binario de 4 Bits** utilizando una placa Arduino UNO. Se incluye el proyecto base junto con la resolución de 5 retos de programación e implementación en hardware.
 
@@ -44,7 +44,7 @@ Archivos de código fuente en C++ para Arduino listos para compilar y cargar.
 
 ##  Autores
 
-* **Estudiante:** Sebastian DeLuque Garcia, Alberto Fandino Lopez
+* **Estudiante:** Sebastian DeLuque Garcia, Alberto Fandino Leal
 * **Asignatura:** Fundamentos de Mecatrónica / Sistemas
 * **Institución:** Corporación Universitaria Americana
 
