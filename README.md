@@ -90,7 +90,7 @@ De forma equivalente, la función propia del núcleo de Arduino `bitRead(numero,
 
 `digitalWrite(BIT0, bitRead(numero, 0));`
 
----
+
 
 ## 6. Desarrollo de los Retos
 
@@ -213,7 +213,9 @@ https://www.tinkercad.com/things/euHizCUEgh0-contador-led-indicador-reto-5?share
 
 Demostración en video del circuito físico en funcionamiento:
 
-* **Enlace del Video:** [PEGAR AQUÍ EL ENLACE DEL VIDEO]
+* **Enlace del Video:**
+
+texto
 
 ---
 
