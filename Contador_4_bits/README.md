@@ -94,3 +94,10 @@ De forma equivalente, la función propia del núcleo de Arduino `bitRead(numero,
 
 
 https://www.tinkercad.com/things/kJsq1yghi4R-contador-de-4-bits-simulacion?sharecode=Pvo5tlPGTQiG3x9UMlR6pD3x_ZXXyo0S9RbDDwt-2QQ
+
+
+## 7. Evidencias del Montaje Físico y Simulaciones
+
+* **Montaje Físico:** Se realizó el montaje utilizando Arduino UNO, protoboard, LEDs, resistencias de 220 Ω y cables jumper. Las evidencias fotográficas se encuentran organizadas en la carpeta `Contador_4_bits/Montaje_1.jpeg/`.
+* **Simulaciones:** Las capturas de pantalla de los circuitos funcionando en Tinkercad se ubican en la carpeta `Contador_4_bits/Conexiones_simulador.png/`.
+
