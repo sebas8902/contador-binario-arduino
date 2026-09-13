@@ -1,4 +1,4 @@
-# Parcial Práctico — Contador Binario de 4 Bits con Arduino UNO
+# Contador Binario de 4 Bits con Arduino UNO
 
 ## 1. Descripción del Proyecto
 
