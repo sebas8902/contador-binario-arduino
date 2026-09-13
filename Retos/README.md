@@ -2,18 +2,12 @@
 
 ### Reto 1 — Velocidad del Contador
 
-* **¿Qué se solicitaba?**
-Modificar el contador para que el tiempo entre cada número fuera de 500 ms.
+* **¿Qué se solicitaba?** Modificar el contador para que el tiempo entre cada número fuera de 500 ms.
 
-
-* **Modificación realizada:**
-Se creó la variable `const int waitDelay = 500;`. Después se utilizó `delay(waitDelay);`. Esto evita escribir directamente `delay(500)` en diferentes partes del programa.
-
+* **Modificación realizada:** Se creó la variable `const int waitDelay = 500;`. Después se utilizó `delay(waitDelay);`. Esto evita escribir directamente `delay(500)` en diferentes partes del programa.
 
 * **Resultado:**
 El contador muestra cada número durante aproximadamente 500 ms antes de avanzar al siguiente.
-
-
 
 
 ### Reto 2 — Contador Descendente
