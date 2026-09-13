@@ -176,12 +176,18 @@ El quinto LED permanece apagado durante los números del 0 al 14. Cuando los cua
 
 Se realizaron simulaciones de los diferentes ejercicios utilizando Tinkercad Circuits:
 
-* **Contador binario de 4 bits:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
-* **Reto 1 — Velocidad:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
-* **Reto 2 — Contador descendente:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
-* **Reto 3 — Botón:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
-* **Reto 4 — Números pares:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
-* **Reto 5 — LED indicador:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
+* **Contador binario de 4 bits:**
+[https://www.tinkercad.com/things/kJsq1yghi4R-contador-de-4-bits-simulacion?sharecode=Pvo5tlPGTQiG3x9UMlR6pD3x_ZXXyo0S9RbDDwt-2QQ]
+* **Reto 1 — Velocidad:**
+[https://www.tinkercad.com/things/6BHUwJEuLod-contadororiginal-reto-1?sharecode=P9H4-m8a9-OAp5zv23NsaZ7jadrkyq5j7l18FESj2Po]
+* **Reto 2 — Contador descendente:**
+[https://www.tinkercad.com/things/dJkXtvRqult-contador-descendente-reto-2?sharecode=bHT-gHdlrKlk8YfbD7AWOsHZh8Dz8AWSZinU1XLqGtE]
+* **Reto 3 — Botón:**
+[https://www.tinkercad.com/things/6vjnUO9Olpc-contador-con-boton-reto-3?sharecode=ZmfMkzTAq3_OMA5oVFTNUEbq7CJMrv5coDMDivIEMvQ]
+* **Reto 4 — Números pares:**
+[https://www.tinkercad.com/things/fhMxlsXUeku-contador-pares-reto-4?sharecode=qRR2NKfwdzj-MC-l-p91KTk3njIO5Y3OmysD7hIB90w]
+* **Reto 5 — LED indicador:**
+[https://www.tinkercad.com/things/euHizCUEgh0-contador-led-indicador-reto-5?sharecode=fFCLn9fAUj0qEihQDjeMqNb_v28-671B05H0OY5gl1Q]
 
 ---
 
