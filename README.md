@@ -70,18 +70,18 @@ Se evalúa la presencia de un `1` lógico en una posición específica utilizand
 ```cpp
 digitalWrite(PIN, (numero & (1 << i)) ? HIGH : LOW); 
 ```
-##6. Desarrollo de los retos
-Reto 1 — Velocidad del contador
-¿Qué se solicitaba?
+## 6. Desarrollo de los retos
+### Reto 1 — Velocidad del contador
+**¿Qué se solicitaba?**
 
 Modificar el contador para que el tiempo entre cada número fuera de 500 ms.
 
-Modificación realizada
+**Modificación realizada**
 
 Se creó la variable:
-
+```cpp
 const int waitDelay = 500;
-
+```
 Después se utilizó:
 
 delay(waitDelay);
