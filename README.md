@@ -1,38 +1,42 @@
-# contador-binario-arduino
-Diseñar, construir, programar y documentar un contador binario de 4 bits utilizando Arduino y LEDs, aplicando los conceptos trabajados en clase sobre salidas digitales, representación binaria, estructuras repetitivas, arreglos, operadores bit a bit y montaje básico de circuitos electrónicos.
-
 # Parcial Práctico — Contador Binario de 4 Bits con Arduino UNO
 
 ## 1. Descripción del Proyecto
-Este proyecto documenta la creación, desarrollo físico y simulación de un contador binario de 4 bits mediante una placa Arduino UNO. El sistema representa valores decimales del 0 al 15 mediante cuatro LEDs en formato binario, procesando el encendido/apagado de las salidas digitales utilizando operaciones a nivel de bits (bitwise).
 
+Este proyecto documenta el diseño, la simulación y la implementación física de un contador binario de 4 bits en Arduino UNO. El sistema representa números decimales del 0 al 15 mediante cuatro LEDs (del bit menos significativo al más significativo) utilizando operadores bit a bit (bitwise) y funciones de manipulación de bits para encender o apagar las salidas digitales.
+
+---
 
 ## 2. Materiales Utilizados
+
 * 1x Placa Arduino UNO R3
 * 1x Protoboard
-* 4x LEDs para conteo (1x Verde, 1x Rojo, 1x Azul, 1x Rojo)
-* 1x LED adicional para indicador (Reto 5)
+* 4x LEDs para los bits del contador (Bit 0 a Bit 3)
+* 1x LED indicador (Reto 5)
 * 5x Resistencias limitadoras de 220 Ω
-* 1x Pulsador (Reto 3)
-* Cables de conexión Jumper
+* 1x Pulsador / Botón (Reto 3)
+* Cables Jumper
+
+---
+
+## 3. Explicación del Circuito
+
+* **Salidas digitales de bits:** Los ánodos de los LEDs están conectados mediante resistencias de 220 Ω a los pines digitales:
+* **Pin 8 (`BIT0`):** Bit 0 / LSB ($2^0 = 1$)
+* **Pin 9 (`BIT1`):** Bit 1 ($2^1 = 2$)
+* **Pin 10 (`BIT2`):** Bit 2 ($2^2 = 4$)
+* **Pin 11 (`BIT3`):** Bit 3 / MSB ($2^3 = 8$)
 
 
-## 3. Explicación del Circuito Físico
-* **Salidas del Contador:** Los ánodos de los LEDs están conectados a través de resistencias de 220 Ω a los pines digitales de salida:
-  * **Pin 8 (`BIT0`):** LSB - Bit 0 ($2^0 = 1$)
-  * **Pin 9 (`BIT1`):** Bit 1 ($2^1 = 2$)
-  * **Pin 10 (`BIT2`):** Bit 2 ($2^2 = 4$)
-  * **Pin 11 (`BIT3`):** MSB - Bit 3 ($2^3 = 8$)
-* **Línea de Masa (GND):** Todos los cátodos de los LEDs comparten la línea negativa de la protoboard conectada directamente al pin **GND** de la placa Arduino.
-* **Pulsador (Reto 3):** Conectado al **Pin 7** en configuración `INPUT_PULLUP`.
-* **LED Indicador (Reto 5):** Conectado al **Pin 12** a través de una resistencia de 220 Ω.
+* **Línea de Tierra (GND):** Todos los cátodos de los LEDs van a la línea negativa de la protoboard, conectada a un pin **GND** del Arduino.
+* **Pulsador (`BOTON_PIN`):** Conectado al **Pin 7** en modo `INPUT_PULLUP`.
+* **LED Indicador (`LED_INDICADOR`):** Conectado al **Pin 12** con su respectiva resistencia a tierra.
 
-
+---
 
 ## 4. Funcionamiento del Contador Binario
 
-| Decimal | Binario | Pin 11 (MSB) | Pin 10 | Pin 9 | Pin 8 (LSB) |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+| Decimal | Binario | Pin 11 (BIT3) | Pin 10 (BIT2) | Pin 9 (BIT1) | Pin 8 (BIT0) |
+| --- | --- | --- | --- | --- | --- |
 | 0 | 0000 | OFF | OFF | OFF | OFF |
 | 1 | 0001 | OFF | OFF | OFF | ON |
 | 2 | 0010 | OFF | OFF | ON | OFF |
@@ -50,7 +54,7 @@ Este proyecto documenta la creación, desarrollo físico y simulación de un con
 | 14 | 1110 | ON | ON | ON | OFF |
 | 15 | 1111 | ON | ON | ON | ON |
 
-
+---
 
 ## 5. Explicación del Código y Funciones
 
@@ -60,200 +64,146 @@ Este proyecto documenta la creación, desarrollo físico y simulación de un con
 * **`digitalWrite()`**: Escribe un valor `HIGH` (5V) o `LOW` (0V) en el pin correspondiente.
 * **`digitalRead()`**: Lee la entrada del pulsador (`HIGH` o `LOW`).
 * **`delay()`**: Define el tiempo de pausa en milisegundos entre cambios de número.
+
 ### Explicación de Operadores Bitwise y Funciones Bit
 
 Para controlar los LEDs individualmente sin escribir condicionales manuales para cada número (del 0 al 15), se analiza la representación binaria de la variable `numero` mediante dos enfoques:
 
 #### 1. Operaciones Bitwise (`&` y `<<`)
+
 Se evalúa la presencia de un `1` lógico en una posición específica utilizando una máscara binaria:
 
-```cpp
-digitalWrite(PIN, (numero & (1 << i)) ? HIGH : LOW); 
-```
-## 6. Desarrollo de los retos
-### Reto 1 — Velocidad del contador
-**¿Qué se solicitaba?**
+`digitalWrite(PIN, (numero & (1 << i)) ? HIGH : LOW);`
 
+* **Desplazamiento a la izquierda (`1 << i`):** Toma el valor binario `0001` y lo desplaza $i$ posiciones a la izquierda.
+* Para el bit 0 ($i=0$): `1 << 0` genera la máscara `0001` ($1$).
+* Para el bit 1 ($i=1$): `1 << 1` genera la máscara `0010` ($2$).
+* Para el bit 2 ($i=2$): `1 << 2` genera la máscara `0100` ($4$).
+* Para el bit 3 ($i=3$): `1 << 3` genera la máscara `1000` ($8$).
+
+
+* **Operador AND bitwise (`&`):** Realiza una comparación lógica AND bit a bit entre la variable `numero` y la máscara generada. Si el bit evaluado en el número contiene un `1`, el resultado completo es distinto de cero (`HIGH`). Si contiene un `0`, la operación devuelve cero (`LOW`).
+
+#### 2. Uso de la función `bitRead()`
+
+De forma equivalente, la función propia del núcleo de Arduino `bitRead(numero, i)` lee directamente el estado del bit en el índice $i$ (donde $0$ representa el bit menos significativo / LSB). Retorna un valor numérico directo `1` o `0`, el cual es interpretado como `HIGH` o `LOW` por la función `digitalWrite()`.
+
+`digitalWrite(BIT0, bitRead(numero, 0));`
+
+---
+
+## 6. Desarrollo de los Retos
+
+### Reto 1 — Velocidad del Contador
+
+* **¿Qué se solicitaba?**
 Modificar el contador para que el tiempo entre cada número fuera de 500 ms.
 
-**Modificación realizada**
 
-Se creó la variable:
-```cpp
-const int waitDelay = 500;
-```
-Después se utilizó:
+* **Modificación realizada:**
+Se creó la variable `const int waitDelay = 500;`. Después se utilizó `delay(waitDelay);`. Esto evita escribir directamente `delay(500)` en diferentes partes del programa.
 
-delay(waitDelay);
 
-Esto evita escribir directamente delay(500) en diferentes partes del programa.
-
-Resultado
-
+* **Resultado:**
 El contador muestra cada número durante aproximadamente 500 ms antes de avanzar al siguiente.
 
-Reto 2 — Contador descendente
-¿Qué se solicitaba?
+---
 
-Modificar el contador para que realizara la secuencia:
+### Reto 2 — Contador Descendente
 
-15, 14, 13, 12 ... 3, 2, 1, 0
-Modificación realizada
+* **¿Qué se solicitaba?**
+Modificar el contador para que realizara la secuencia descendente: `15, 14, 13, 12 ... 3, 2, 1, 0`.
 
-Se modificó el ciclo for para comenzar en 15 y disminuir:
 
-for (int numero = 15; numero >= 0; numero--)
-Resultado
+* **Modificación realizada:**
+Se modificó el ciclo `for` para comenzar en 15 y disminuir: `for (int numero = 15; numero >= 0; numero--)`.
 
+
+* **Resultado:**
 Los LEDs representan los números desde 15 hasta 0 en orden descendente. Al terminar el ciclo, vuelve a comenzar desde 15.
 
-Reto 3 — Control mediante botón
-¿Qué se solicitaba?
+---
 
+### Reto 3 — Control mediante Botón
+
+* **¿Qué se solicitaba?**
 Agregar un pulsador para que el contador avanzara solamente cuando el usuario presionara el botón.
 
-Modificación realizada
 
-Se agregó el botón al pin digital 7:
+* **Modificación realizada:**
+Se agregó el botón al pin digital 7 (`const int BOTON_PIN = 7;`) y se configuró como entrada utilizando `pinMode(BOTON_PIN, INPUT_PULLUP);`. Luego se utiliza `digitalRead()` para conocer el estado del botón y cada vez que se detecta una pulsación el contador aumenta: `contador = (contador + 1) % 16;`.
 
-const int BOTON_PIN = 7;
 
-Se configuró como entrada utilizando:
-
-pinMode(BOTON_PIN, INPUT_PULLUP);
-
-Luego se utiliza digitalRead() para conocer el estado del botón.
-
-Cada vez que se detecta una pulsación, el contador aumenta:
-
-contador = (contador + 1) % 16;
-Resultado
-
+* **Resultado:**
 El contador deja de avanzar automáticamente y cambia de número cada vez que se presiona el botón.
+Secuencia: `0` $\rightarrow$ `1` $\rightarrow$ `2` $\rightarrow$ ... $\rightarrow$ `15` $\rightarrow$ `0`.
 
-La secuencia es:
+---
 
-0
-↓ botón
-1
-↓ botón
-2
-↓ botón
-3
-...
-15
-↓ botón
-0
-Reto 4 — Mostrar solamente números pares
-¿Qué se solicitaba?
+### Reto 4 — Mostrar Solamente Números Pares
 
-Modificar el contador para mostrar únicamente:
+* **¿Qué se solicitaba?**
+Modificar el contador para mostrar únicamente: `0, 2, 4, 6, 8, 10, 12, 14`.
 
-0, 2, 4, 6, 8, 10, 12, 14
-Modificación realizada
 
-Se modificó el ciclo para aumentar el número de dos en dos:
+* **Modificación realizada:**
+Se modificó el ciclo para aumentar el número de dos en dos: `for (int numero = 0; numero <= 14; numero += 2)`.
 
-for (int numero = 0; numero <= 14; numero += 2)
-Resultado
 
+* **Resultado:**
 El contador solamente muestra números pares y los cuatro LEDs representan cada número en su correspondiente forma binaria.
 
-Reto 5 — LED indicador
-¿Qué se solicitaba?
+---
 
+### Reto 5 — LED Indicador
+
+* **¿Qué se solicitaba?**
 Agregar un quinto LED que permaneciera apagado durante el conteo normal y se encendiera cuando el contador llegara a 15.
 
-Modificación realizada
 
-Se agregó el quinto LED en el pin 12:
-
-const int LED_INDICADOR = 12;
-
-El programa comprueba si el número es 15:
-
-if (numero == 15)
-{
-    digitalWrite(LED_INDICADOR, HIGH);
-}
-else
-{
-    digitalWrite(LED_INDICADOR, LOW);
-}
-Resultado
-
-El quinto LED permanece apagado durante los números del 0 al 14.
-
-Cuando los cuatro LEDs principales representan:
-
-15 = 1111
-
-el quinto LED se enciende.
-
-Al comenzar nuevamente el conteo, el LED indicador vuelve a apagarse.
-
-8. Simulación en Tinkercad
-
-Se realizaron simulaciones de los diferentes ejercicios utilizando Tinkercad Circuits.
-
-Contador binario de 4 bits
-
-Enlace: [PONER AQUÍ EL ENLACE DE TINKERCAD]
-
-Reto 1 — Velocidad
-
-Enlace: [PONER AQUÍ EL ENLACE DE TINKERCAD]
-
-Reto 2 — Contador descendente
-
-Enlace: [PONER AQUÍ EL ENLACE DE TINKERCAD]
-
-Reto 3 — Botón
-
-Enlace: [PONER AQUÍ EL ENLACE DE TINKERCAD]
-
-Reto 4 — Números pares
-
-Enlace: [PONER AQUÍ EL ENLACE DE TINKERCAD]
-
-Reto 5 — LED indicador
-
-Enlace: [PONER AQUÍ EL ENLACE DE TINKERCAD]
-
-9. Evidencias del montaje físico
-
-Se realizó el montaje físico del contador utilizando Arduino, protoboard, LEDs, resistencias y cables jumper.
-
-Las fotografías permiten observar el montaje y el funcionamiento de los LEDs.
-
-Las evidencias se encuentran organizadas en la carpeta:
-
-evidencias/montaje_fisico/
-10. Evidencias de las simulaciones
-
-Las capturas de las simulaciones realizadas en Tinkercad se encuentran organizadas en:
-
-evidencias/simulacion/
-
-En ellas se puede observar el funcionamiento de los diferentes retos.
-
-11. Video del funcionamiento
-
-Se realizó un video donde se muestra el funcionamiento del circuito físico.
-
-Video: [PEGAR AQUÍ EL ENLACE DEL VIDEO]
-
-12. Conclusión
-
-La realización de este proyecto permitió comprender cómo Arduino puede utilizar sus salidas digitales para representar información binaria mediante LEDs.
-
-A través de los cuatro LEDs fue posible representar los valores del 0 al 15 utilizando los cuatro bits de un número binario. También se aplicaron ciclos for, variables, entradas y salidas digitales, el uso de un pulsador y operaciones bit a bit.
-
-Los diferentes retos permitieron modificar el funcionamiento inicial del contador y comprobar cómo pequeños cambios en el programa pueden producir diferentes comportamientos en el circuito.
-
-Finalmente, la simulación en Tinkercad y el montaje físico permitieron comprobar el funcionamiento del programa tanto de manera virtual como real.
+* **Modificación realizada:**
+Se agregó el quinto LED en el pin 12 (`const int LED_INDICADOR = 12;`) y el programa comprueba si el número es 15 (`if (numero == 15) { digitalWrite(LED_INDICADOR, HIGH); } else { digitalWrite(LED_INDICADOR, LOW); }`).
 
 
-Los diferentes retos permitieron modificar el funcionamiento inicial del contador y comprobar cómo pequeños cambios en el programa pueden producir diferentes comportamientos en el circuito.
+* **Resultado:**
+El quinto LED permanece apagado durante los números del 0 al 14. Cuando los cuatro LEDs principales representan `15` (`1111`), el quinto LED se enciende. Al reiniciar el conteo, vuelve a apagarse.
 
-Finalmente, la simulación en Tinkercad y el montaje físico permitieron comprobar el funcionamiento del programa tanto de manera virtual como real.
+
+
+---
+
+## 7. Simulación en Tinkercad
+
+Se realizaron simulaciones de los diferentes ejercicios utilizando Tinkercad Circuits:
+
+* **Contador binario de 4 bits:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
+* **Reto 1 — Velocidad:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
+* **Reto 2 — Contador descendente:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
+* **Reto 3 — Botón:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
+* **Reto 4 — Números pares:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
+* **Reto 5 — LED indicador:** [PONER AQUÍ EL ENLACE DE TINKERCAD]
+
+---
+
+## 8. Evidencias del Montaje Físico y Simulaciones
+
+* **Montaje Físico:** Se realizó el montaje utilizando Arduino UNO, protoboard, LEDs, resistencias de 220 Ω y cables jumper. Las evidencias fotográficas se encuentran organizadas en la carpeta `evidencias/montaje_fisico/`.
+* **Simulaciones:** Las capturas de pantalla de los circuitos funcionando en Tinkercad se ubican en la carpeta `evidencias/simulacion/`.
+
+---
+
+## 9. Video del Funcionamiento
+
+Demostración en video del circuito físico en funcionamiento:
+
+* **Enlace del Video:** [PEGAR AQUÍ EL ENLACE DEL VIDEO]
+
+---
+
+## 10. Conclusión
+
+La realización de este proyecto permitió comprender cómo la placa Arduino UNO utiliza sus salidas digitales para representar información binaria mediante LEDs.
+
+A través de los cuatro LEDs fue posible representar los valores del 0 al 15 correspondientes a los cuatro bits de un número binario. Se aplicaron ciclos `for`, variables, entradas lógicas mediante `INPUT_PULLUP`, lectura de pulsadores y manipulación de bits con operadores bitwise y funciones como `bitRead()`.
+
+Los retos permitieron iterar sobre el programa base y comprobar cómo pequeñas modificaciones en el código producen diferentes comportamientos físicos en el circuito. Finalmente, la simulación virtual en Tinkercad y el montaje en protoboard validaron la correcta ejecución teórica y práctica del proyecto.
