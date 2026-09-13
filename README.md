@@ -60,13 +60,7 @@ Este proyecto documenta la creación, desarrollo físico y simulación de un con
 * **`digitalWrite()`**: Escribe un valor `HIGH` (5V) o `LOW` (0V) en el pin correspondiente.
 * **`digitalRead()`**: Lee la entrada del pulsador (`HIGH` o `LOW`).
 * **`delay()`**: Define el tiempo de pausa en milisegundos entre cambios de número.
-
-### Explicación de Operadores Bitwise
-Para evaluar cada bit de la variable `numero`, se aplican operaciones bit a bit:
-```cpp
-numero & (1 << i)
-
-## 5. Explicación del código
+5. Explicación del código
 setup()
 
 La función setup() se ejecuta una sola vez cuando Arduino inicia.
@@ -410,6 +404,14 @@ La realización de este proyecto permitió comprender cómo Arduino puede utiliz
 
 A través de los cuatro LEDs fue posible representar los valores del 0 al 15 utilizando los cuatro bits de un número binario. También se aplicaron ciclos for, variables, entradas y salidas digitales, el uso de un pulsador y operaciones bit a bit.
 
+Los diferentes retos permitieron modificar el funcionamiento inicial del contador y comprobar cómo pequeños cambios en el programa pueden producir diferentes comportamientos en el circuito.
+
+Finalmente, la simulación en Tinkercad y el montaje físico permitieron comprobar el funcionamiento del programa tanto de manera virtual como real.
+
+### Explicación de Operadores Bitwise
+Para evaluar cada bit de la variable `numero`, se aplican operaciones bit a bit:
+```cpp
+numero & (1 << i)
 Los diferentes retos permitieron modificar el funcionamiento inicial del contador y comprobar cómo pequeños cambios en el programa pueden producir diferentes comportamientos en el circuito.
 
 Finalmente, la simulación en Tinkercad y el montaje físico permitieron comprobar el funcionamiento del programa tanto de manera virtual como real.
